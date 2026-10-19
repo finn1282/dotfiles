@@ -7,9 +7,9 @@ format = """$hostname$directory$git_branch$git_status$python$character"""
 palette = "colors"
 
 [palettes.colors]
-primary = '#c5c5d6'
-secondary = '#c9c6c7'
-muted = '#929092'
+primary = '#bac3ff'
+secondary = '#c6c5d0'
+muted = '#90909a'
 error = '#ffb4ab'
 
 [hostname]

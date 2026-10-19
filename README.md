@@ -1,7 +1,7 @@
 # T490 dotfiles
 
 Arch + Hyprland 0.56 (Lua config) for a ThinkPad T490. Symphony's layout and swaync/swayosd styling,
-Mac-style motion, and one palette generated from the star-chart wallpaper (matugen, neutral scheme).
+Mac-style motion, and one palette generated from the star-chart wallpaper (matugen, tonal-spot scheme).
 
 ## Install (fresh system, from a TTY, before the first Hyprland login)
 
