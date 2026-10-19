@@ -15,6 +15,18 @@ warn() { printf '\033[1;33m  ! %s\033[0m\n' "$*"; }
 list() { grep -v '^\s*#' "$DOTS/packages/$1" | grep -v '^\s*$'; }
 pkgs() { mapfile -t PKGS < <(list "$1"); }
 
+# Split a list into packages the enabled repos have (REPO) and the rest (OTHER, for yay),
+# so one AUR-only or BlackArch-only name can't abort the whole pacman run.
+split_pkgs() {
+    pkgs "$1"
+    declare -A have=()
+    while read -r p; do have[$p]=1; done < <(pacman -Slq)
+    REPO=(); OTHER=()
+    for p in "${PKGS[@]}"; do
+        if [[ -n "${have[$p]:-}" ]]; then REPO+=("$p"); else OTHER+=("$p"); fi
+    done
+}
+
 preflight() {
     [[ $EUID -ne 0 ]] || { echo "Run as your user, not root."; exit 1; }
     [[ "$(realpath "$(dirname "$0")")" == "$(realpath "$DOTS")" ]] || {
@@ -24,14 +36,19 @@ preflight() {
 
 step_packages() {
     say "Installing desktop packages"
-    pkgs desktop.txt
-    sudo pacman -Syu --needed --noconfirm "${PKGS[@]}"
+    sudo pacman -Syu --noconfirm
+    split_pkgs desktop.txt
+    sudo pacman -S --needed --noconfirm "${REPO[@]}"
     if ! command -v yay >/dev/null; then
         say "Bootstrapping yay"
         local tmp; tmp=$(mktemp -d)
         git clone https://aur.archlinux.org/yay-bin.git "$tmp/yay-bin"
         (cd "$tmp/yay-bin" && makepkg -si --noconfirm)
         rm -rf "$tmp"
+    fi
+    if ((${#OTHER[@]})); then
+        warn "Not in the official repos, trying the AUR: ${OTHER[*]}"
+        yay -S --needed --noconfirm "${OTHER[@]}" || warn "Some of these failed; install them later"
     fi
 }
 
@@ -50,8 +67,18 @@ step_system() {
         sudo sed -i '0,/^auth/s//auth      sufficient pam_fprintd.so\nauth/' /etc/pam.d/sudo
     fi
 
+    say "Firmware updates: point fwupd at the /efi partition"
+    if [[ -f /etc/fwupd/fwupd.conf ]] && ! grep -q '^EspLocation' /etc/fwupd/fwupd.conf; then
+        if grep -q '^\[fwupd\]' /etc/fwupd/fwupd.conf; then
+            sudo sed -i '/^\[fwupd\]/a EspLocation=/efi' /etc/fwupd/fwupd.conf
+        else
+            printf '[fwupd]\nEspLocation=/efi\n' | sudo tee -a /etc/fwupd/fwupd.conf >/dev/null
+        fi
+    fi
+
     say "Enabling services"
-    sudo systemctl enable NetworkManager sddm bluetooth tlp thermald cronie grub-btrfsd
+    # NetworkManager-dispatcher is required by tlp-rdw (radio switching on dock/undock, wifi/LAN)
+    sudo systemctl enable NetworkManager NetworkManager-dispatcher sddm bluetooth tlp thermald cronie grub-btrfsd
     sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
     systemctl --user enable gnome-keyring-daemon.socket || warn "gnome-keyring socket not found"
 
@@ -116,8 +143,12 @@ step_ctf() {
             warn "Skipping BlackArch; burpsuite, zsteg and stegsolve will fail to install"
         fi
     fi
-    pkgs ctf.txt
-    sudo pacman -Syu --needed "${PKGS[@]}" || warn "Some CTF packages failed; check the names above"
+    sudo pacman -Syu --noconfirm
+    split_pkgs ctf.txt
+    sudo pacman -S --needed "${REPO[@]}" || warn "Some CTF packages failed; check the names above"
+    if ((${#OTHER[@]})); then
+        yay -S --needed --noconfirm "${OTHER[@]}" || warn "Not found anywhere: ${OTHER[*]}"
+    fi
     pkgs aur-ctf.txt
     yay -S --needed --noconfirm "${PKGS[@]}" || warn "Some AUR CTF packages failed"
     [[ -f /usr/share/wordlists/rockyou.txt.gz ]] && sudo gunzip -k /usr/share/wordlists/rockyou.txt.gz || true

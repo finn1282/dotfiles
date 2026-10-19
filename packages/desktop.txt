@@ -9,12 +9,14 @@ bat
 blueman
 bluez
 bluez-utils
+bolt
 brightnessctl
 btop
 btrfs-progs
 cliphist
 cmake
 cronie
+dconf
 dolphin
 dosfstools
 efibootmgr
@@ -27,6 +29,7 @@ fcitx5-qt
 ffmpegthumbnailer
 ffmpegthumbs
 fprintd
+fwupd
 git
 gnome-keyring
 grim
@@ -56,6 +59,7 @@ libva-utils
 linux
 linux-firmware
 linux-lts
+lm_sensors
 man-db
 matugen
 mesa-utils
@@ -101,6 +105,7 @@ tlp
 tlp-rdw
 ttf-jetbrains-mono-nerd
 udiskie
+udisks2
 unrar
 unzip
 vim
@@ -110,12 +115,14 @@ waybar
 wayland-utils
 wev
 wget
+wireless-regdb
 wireplumber
 wl-clip-persist
 wl-clipboard
 xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 xdg-user-dirs
+xdg-utils
 yazi
 zathura
 zathura-pdf-mupdf
