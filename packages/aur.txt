@@ -1,4 +1,3 @@
-bibata-cursor-theme-bin
 claude-desktop
 leaf-markdown-viewer-bin
 spicetify-cli

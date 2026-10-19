@@ -7,7 +7,7 @@ local c = require("./colors.lua")   -- generated palette (make-palette)
 hl.monitor({ output = "eDP-1", mode = "1920x1080", position = "0x0", scale = "1.2" })
 
 -- ===== Environment =====
-hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("XCURSOR_THEME", "Adwaita")
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("MOZ_ENABLE_WAYLAND", "1")
