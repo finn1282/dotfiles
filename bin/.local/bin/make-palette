@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Rebuild every color file from the wallpaper (palette B: neutral, dark).
+set -euo pipefail
+matugen image "$HOME/.config/hypr/wallpaper.png" -t scheme-neutral -m dark --prefer saturation
+echo "Palette rebuilt. Reload with: hyprctl reload; pkill -SIGUSR1 kitty; pkill -SIGUSR2 waybar; swaync-client -rs"

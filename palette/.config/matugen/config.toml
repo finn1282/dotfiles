@@ -1,0 +1,56 @@
+# Writes straight into the dotfiles repo, so stow symlinks stay intact.
+# Run make-palette to regenerate.
+
+[config]
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hypr-colors.lua'
+output_path = '~/dotfiles/hypr/.config/hypr/colors.lua'
+
+[templates.hyprlock]
+input_path = '~/.config/matugen/templates/hyprlock-colors.conf'
+output_path = '~/dotfiles/hypr/.config/hypr/hyprlock-colors.conf'
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty-colors.conf'
+output_path = '~/dotfiles/kitty/.config/kitty/colors.conf'
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/dotfiles/waybar/.config/waybar/colors.css'
+
+[templates.swayosd]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/dotfiles/swayosd/.config/swayosd/colors.css'
+
+[templates.rofi]
+input_path = '~/.config/matugen/templates/rofi-colors.rasi'
+output_path = '~/dotfiles/rofi/.config/rofi/colors.rasi'
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/dotfiles/gtk/.config/gtk-3.0/colors.css'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/dotfiles/gtk/.config/gtk-4.0/colors.css'
+
+[templates.starship]
+input_path = '~/.config/matugen/templates/starship.toml'
+output_path = '~/dotfiles/starship/.config/starship.toml'
+
+[templates.yazi]
+input_path = '~/.config/matugen/templates/yazi-theme.toml'
+output_path = '~/dotfiles/yazi/.config/yazi/theme.toml'
+
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/dotfiles/btop/.config/btop/themes/palette.theme'
+
+[templates.zathura]
+input_path = '~/.config/matugen/templates/zathura-colors'
+output_path = '~/dotfiles/zathura/.config/zathura/colors'
+
+[templates.spicetify]
+input_path = '~/.config/matugen/templates/spicetify-colors.ini'
+output_path = '~/dotfiles/spicetify/.config/spicetify/Themes/palette/color.ini'

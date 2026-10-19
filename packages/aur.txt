@@ -1,0 +1,8 @@
+bibata-cursor-theme-bin
+claude-desktop
+leaf-markdown-viewer-bin
+spicetify-cli
+spotify
+timeshift-autosnap
+whitesur-icon-theme
+zen-browser-bin

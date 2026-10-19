@@ -1,0 +1,37 @@
+/* swayosd — Symphony's layout (MIT), colors from colors.css */
+@import "colors.css";
+
+window {
+    padding: 10px;
+    border-radius: 16px;
+    border: 1px solid @outline_variant;
+    background: alpha(@surface, 0.88);
+}
+
+#container { margin: 16px 20px; }
+
+image, label {
+    color: @on_surface;
+    font-family: "Inter";
+}
+
+progressbar:disabled, image:disabled { opacity: 0.5; }
+
+progressbar {
+    min-height: 5px;
+    border-radius: 999px;
+    background: transparent;
+    border: none;
+}
+trough {
+    min-height: inherit;
+    border-radius: inherit;
+    border: none;
+    background: alpha(@on_surface, 0.2);
+}
+progress {
+    min-height: inherit;
+    border-radius: inherit;
+    border: none;
+    background: @primary;
+}

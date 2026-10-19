@@ -1,0 +1,8 @@
+# zathura — your settings, wallpaper palette
+include colors
+
+set recolor                true
+set recolor-keephue        true
+set selection-clipboard    clipboard
+set adjust-open            "best-fit"
+set font                   "Inter 11"
