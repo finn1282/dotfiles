@@ -21,6 +21,7 @@ Each top-level folder is a GNU Stow package that mirrors your home folder.
 | swaync, swayosd | notifications and volume/brightness popups |
 | rofi | launcher, cheatsheet theme, colors.rasi |
 | kitty, zsh, starship, bat, yazi, zathura, btop, nvim | terminal tools |
+| spotify | launch flags so Spotify runs natively on Wayland (sharp, not blurry) |
 | gtk, qt, fontconfig | adw-gtk3-dark + palette, Kvantum KvGnomeDark, WhiteSur icons, Inter/JetBrainsMono |
 | fcitx5 | Pinyin input |
 | spicetify | Spotify theme |

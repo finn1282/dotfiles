@@ -8,7 +8,7 @@
 set -euo pipefail
 
 DOTS="$HOME/dotfiles"
-STOW_PKGS=(hypr waybar swaync swayosd rofi kitty zsh starship yazi zathura btop bat gtk qt fontconfig fcitx5 nvim spicetify palette bin)
+STOW_PKGS=(hypr waybar swaync swayosd rofi kitty zsh starship yazi zathura btop bat gtk qt fontconfig fcitx5 nvim spotify spicetify palette bin)
 
 say()  { printf '\n\033[1;35m==> %s\033[0m\n' "$*"; }
 warn() { printf '\033[1;33m  ! %s\033[0m\n' "$*"; }
