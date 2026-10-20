@@ -75,6 +75,12 @@ hl.config({
     },
 })
 
+-- ===== XWayland (Java apps: Burp, Ghidra, Stegsolve) =====
+-- Draw X11 apps at native resolution instead of upscaling them to 1.2x,
+-- which looked pixelated. They come out a little smaller; raise the font
+-- size inside the app if needed.
+hl.config({ xwayland = { force_zero_scaling = true } })
+
 -- ===== Animations (Mac-style easing; speed = tenths of a second) =====
 hl.curve("mac",    { type = "bezier", points = { {0.25, 0.1}, {0.25, 1.0} } })
 hl.curve("macOut", { type = "bezier", points = { {0.16, 1.0}, {0.3, 1.0} } })
