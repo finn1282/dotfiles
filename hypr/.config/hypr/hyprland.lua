@@ -119,6 +119,9 @@ for _, ns in ipairs({ "swaync-control-center", "swaync-notification-window" }) d
 end
 
 -- ===== Window rules =====
+-- Apps like kitty and Zen remember being maximised and ask for it again on open,
+-- which takes over the whole workspace. Ignore that so new windows always tile.
+hl.window_rule({ match = { class = ".*" }, suppress_event = "maximize" })
 hl.window_rule({ match = { class = "yazi-float" },   float = true, size = { 1000, 650 }, center = true })
 hl.window_rule({ match = { class = "nmtui-float" },  float = true, size = { 760, 520 },  center = true })
 hl.window_rule({ match = { class = "org.pulseaudio.pavucontrol" }, float = true, size = { 760, 520 }, center = true })
