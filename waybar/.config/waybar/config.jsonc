@@ -52,7 +52,10 @@
         "format-off": "󰂲",
         "format-connected": "  {device_alias}",
         "tooltip-format-connected": "{device_enumerate}",
-        "on-click": "blueman-manager"
+        "on-click": "blueman-manager",
+        "on-click-right": "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || bluetoothctl power on",
+        "tooltip-format-off": "Bluetooth off (right-click to turn on)",
+        "tooltip-format": "{controller_alias}: on (right-click to turn off)"
     },
     "backlight": {
         "format": "  {percent}%",

@@ -74,6 +74,13 @@ step_system() {
         fi
     fi
 
+    say "Bluetooth: radio starts off at boot"
+    if grep -qE '^#?AutoEnable=' /etc/bluetooth/main.conf; then
+        sudo sed -i -E 's/^#?AutoEnable=.*/AutoEnable=false/' /etc/bluetooth/main.conf
+    else
+        printf '\n[Policy]\nAutoEnable=false\n' | sudo tee -a /etc/bluetooth/main.conf >/dev/null
+    fi
+
     say "Enabling services"
     # NetworkManager-dispatcher is required by tlp-rdw (radio switching on dock/undock, wifi/LAN)
     sudo systemctl enable NetworkManager NetworkManager-dispatcher sddm bluetooth tlp thermald cronie grub-btrfsd
@@ -127,6 +134,8 @@ step_theme() {
     gsettings set org.gnome.desktop.interface cursor-size 24
     gsettings set org.gnome.desktop.interface font-name 'Inter 10'
     gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrainsMono Nerd Font 10'
+    # stop blueman from powering the adapter on when its window opens
+    gsettings set org.blueman.plugins.powermanager auto-power-on false 2>/dev/null || true
 
     say "Spicetify"
     # Official installer: a prebuilt binary in ~/.spicetify (the AUR spicetify-cli build often fails)
