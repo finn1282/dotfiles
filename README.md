@@ -27,7 +27,7 @@ Each top-level folder is a GNU Stow package that mirrors your home folder.
 | spicetify | Spotify theme |
 | palette | matugen config + templates |
 | bin | make-palette |
-| system | /etc tweaks copied by install.sh (not stowed) |
+| system | /etc tweaks and the SilentSDDM login screen config, copied by install.sh (not stowed) |
 | packages | package lists used by install.sh |
 
 ## Colors

@@ -3,7 +3,7 @@
 # Run as your normal user (not root) from ~/dotfiles, in a TTY, before the first Hyprland login.
 #
 #   ./install.sh            everything below, in order
-#   ./install.sh <step>     one step: packages | aur | system | stow | theme | ctf | pipx
+#   ./install.sh <step>     one step: packages | aur | system | sddm | stow | theme | ctf | pipx
 
 set -euo pipefail
 
@@ -31,7 +31,10 @@ preflight() {
     [[ $EUID -ne 0 ]] || { echo "Run as your user, not root."; exit 1; }
     [[ "$(realpath "$(dirname "$0")")" == "$(realpath "$DOTS")" ]] || {
         echo "Clone the repo to ~/dotfiles first (the palette config expects that path)."; exit 1; }
-    ping -c1 -W3 archlinux.org >/dev/null 2>&1 || { echo "No internet. Connect with nmtui first."; exit 1; }
+    # HTTPS check instead of ping: many networks block ping even when the internet works
+    curl -fsS --max-time 10 -o /dev/null https://archlinux.org ||
+        curl -fsS --max-time 10 -o /dev/null https://github.com ||
+        { echo "No internet. Connect with nmtui first."; exit 1; }
 }
 
 step_packages() {
@@ -62,11 +65,6 @@ step_system() {
     say "Copying system tweaks into /etc"
     sudo cp -rv "$DOTS/system/etc/." /etc/
 
-    say "Fingerprint for sudo"
-    if ! grep -q pam_fprintd /etc/pam.d/sudo; then
-        sudo sed -i '0,/^auth/s//auth      sufficient pam_fprintd.so\nauth/' /etc/pam.d/sudo
-    fi
-
     say "Firmware updates: point fwupd at the /efi partition"
     if [[ -f /etc/fwupd/fwupd.conf ]] && ! grep -q '^EspLocation' /etc/fwupd/fwupd.conf; then
         if grep -q '^\[fwupd\]' /etc/fwupd/fwupd.conf; then
@@ -87,6 +85,18 @@ step_system() {
     xdg-user-dirs-update
     mkdir -p "$HOME/Pictures/Screenshots"
     [[ "$SHELL" == */zsh ]] || chsh -s /bin/zsh
+}
+
+step_sddm() {
+    say "SDDM login screen (SilentSDDM)"
+    local theme=/usr/share/sddm/themes/silent
+    if [[ ! -d $theme ]]; then
+        warn "SilentSDDM isn't installed yet; run ./install.sh aur, then ./install.sh sddm"
+        return
+    fi
+    sudo install -m644 "$DOTS/hypr/.config/hypr/wallpaper.png" "$theme/backgrounds/star-chart.png"
+    sudo install -m644 "$DOTS/system/sddm-silent/default.conf.user" "$theme/configs/default.conf.user"
+    echo "  Test it before rebooting: cd $theme && ./test.sh"
 }
 
 step_stow() {
@@ -167,6 +177,7 @@ main() {
     step_packages
     step_aur
     step_system
+    step_sddm
     step_stow
     step_theme
     step_ctf

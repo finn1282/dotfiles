@@ -1,5 +1,6 @@
 claude-desktop
 leaf-markdown-viewer-bin
+sddm-silent-theme
 spicetify-cli
 spotify
 timeshift-autosnap
