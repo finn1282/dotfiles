@@ -50,10 +50,10 @@ for i = 1, 10 do
 end
 
 -- ===== Resize =====
-hl.bind(mod .. " + right", hl.dsp.window.resize({ x = 40,  y = 0 }),  { description = "Resize window right" })
-hl.bind(mod .. " + left",  hl.dsp.window.resize({ x = -40, y = 0 }),  { description = "Resize window left" })
-hl.bind(mod .. " + up",    hl.dsp.window.resize({ x = 0,  y = -40 }), { description = "Resize window up" })
-hl.bind(mod .. " + down",  hl.dsp.window.resize({ x = 0,  y = 40 }),  { description = "Resize window down" })
+hl.bind(mod .. " + right", hl.dsp.window.resize({ x = 40, y = 0, relative = true }),  { repeating = true, description = "Resize window right" })
+hl.bind(mod .. " + left",  hl.dsp.window.resize({ x = -40, y = 0, relative = true }),  { repeating = true, description = "Resize window left" })
+hl.bind(mod .. " + up",    hl.dsp.window.resize({ x = 0, y = -40, relative = true }), { repeating = true, description = "Resize window up" })
+hl.bind(mod .. " + down",  hl.dsp.window.resize({ x = 0, y = 40, relative = true }),  { repeating = true, description = "Resize window down" })
 
 -- ===== Mouse =====
 hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true, description = "Move window (drag)" })
