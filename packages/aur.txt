@@ -5,3 +5,4 @@ spotify
 timeshift-autosnap
 whitesur-icon-theme
 zen-browser-bin
+brave-bin
