@@ -11,7 +11,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # Environment
 export EDITOR=nvim
 export VISUAL=nvim
-export PATH="$HOME/.local/bin:$PATH"   # pipx tools and dotfiles scripts
+export PATH="$HOME/.local/bin:$HOME/.spicetify:$PATH"   # pipx tools, dotfiles scripts, spicetify
 
 # Aliases
 alias ls='eza --icons --group-directories-first'

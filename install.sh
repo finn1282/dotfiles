@@ -129,6 +129,17 @@ step_theme() {
     gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrainsMono Nerd Font 10'
 
     say "Spicetify"
+    # Official installer: a prebuilt binary in ~/.spicetify (the AUR spicetify-cli build often fails)
+    if [[ ! -x "$HOME/.spicetify/spicetify" ]]; then
+        local sp; sp=$(mktemp)
+        if curl -fsSL -o "$sp" https://raw.githubusercontent.com/spicetify/cli/main/install.sh; then
+            sh "$sp" </dev/null || warn "Spicetify install failed; rerun: ./install.sh theme"
+        else
+            warn "Couldn't download the Spicetify installer; rerun: ./install.sh theme"
+        fi
+        rm -f "$sp"
+    fi
+    export PATH="$HOME/.spicetify:$PATH"
     if [[ -d /opt/spotify ]] && command -v spicetify >/dev/null; then
         sudo chmod a+wr /opt/spotify /opt/spotify/Apps -R
         spicetify config current_theme palette color_scheme base >/dev/null
