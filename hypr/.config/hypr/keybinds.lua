@@ -6,6 +6,7 @@ local yazi     = "kitty --class yazi-float -e yazi"
 local menu     = "rofi -show drun"
 local browser  = "zen-browser"
 local scripts  = "~/.config/hypr/scripts/"
+local claude = "claude-desktop"
 
 local mod = "SUPER"
 
@@ -16,6 +17,7 @@ hl.bind(mod .. " + W", hl.dsp.exec_cmd(yazi),     { description = "Open Yazi (fi
 hl.bind(mod .. " + R", hl.dsp.exec_cmd(menu),     { description = "Application launcher" })
 hl.bind(mod .. " + B", hl.dsp.exec_cmd(browser),  { description = "Open browser" })
 hl.bind(mod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"), { description = "Notification centre" })
+hl.bind(mod .. " + A", hl.dsp.exec_cmd(claude), { description = "Open Claude"})
 hl.bind(mod .. " + slash", hl.dsp.exec_cmd(scripts .. "keybind-cheatsheet.sh"), { description = "Rofi Cheatsheet" })
 
 -- ===== Windows =====
