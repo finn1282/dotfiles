@@ -1,2 +1,3 @@
 git-dumper
 pwntools
+ida-pro-mcp

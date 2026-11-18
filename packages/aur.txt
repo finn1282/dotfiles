@@ -2,7 +2,10 @@ claude-desktop
 leaf-markdown-viewer-bin
 sddm-silent-theme
 spotify
-timeshift-autosnap
 whitesur-icon-theme
 zen-browser-bin
 brave-bin
+# Claude Code and MCP servers
+claude-code
+ghidra-mcp
+playwright-mcp

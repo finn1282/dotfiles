@@ -15,7 +15,6 @@ btop
 btrfs-progs
 cliphist
 cmake
-cronie
 dconf
 dolphin
 dosfstools
@@ -34,14 +33,12 @@ git
 gnome-keyring
 grim
 grub
-grub-btrfs
 hypridle
 hyprland
 hyprlock
 hyprpaper
 hyprpolkitagent
 imv
-inotify-tools
 intel-media-driver
 intel-ucode
 inter-font
@@ -100,7 +97,6 @@ swappy
 swaync
 swayosd
 thermald
-timeshift
 tlp
 tlp-rdw
 ttf-jetbrains-mono-nerd
