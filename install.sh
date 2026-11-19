@@ -83,7 +83,7 @@ step_system() {
 
     say "Enabling services"
     # NetworkManager-dispatcher is required by tlp-rdw (radio switching on dock/undock, wifi/LAN)
-    sudo systemctl enable NetworkManager NetworkManager-dispatcher sddm bluetooth tlp thermald
+    sudo systemctl enable NetworkManager NetworkManager-dispatcher sddm bluetooth tlp thermald fstrim.timer
     sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
     systemctl --user enable gnome-keyring-daemon.socket || warn "gnome-keyring socket not found"
 

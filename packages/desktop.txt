@@ -12,12 +12,12 @@ bluez-utils
 bolt
 brightnessctl
 btop
-btrfs-progs
 cliphist
 cmake
 dconf
 dolphin
 dosfstools
+e2fsprogs
 efibootmgr
 eza
 fcitx5
