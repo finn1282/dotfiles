@@ -1,0 +1,13 @@
+audacity
+burpsuite
+foremost
+metasploit
+nmap
+openbsd-netcat
+openvpn
+python-pip
+python-pipx
+python-setuptools
+python-virtualenv
+wireshark-cli
+wireshark-qt

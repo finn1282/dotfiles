@@ -1,0 +1,44 @@
+/* Keybind cheatsheet, colored from colors.rasi */
+@import "~/.config/rofi/colors.rasi"
+
+* {
+    bg:      @surface;
+    bg-alt:  @surface-container-low;
+    pill:    @surface-container-high;
+    fg:      @on-surface;
+    muted:   @outline;
+    accent:  @primary;
+
+    background-color: transparent;
+    text-color:       @fg;
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+window {
+    background-color: @bg;
+    border:           2px;
+    border-color:     @outline-variant;
+    border-radius:    14px;
+    width:            860px;
+    padding:          16px;
+}
+
+mainbox { children: [ inputbar, listview ]; spacing: 12px; }
+
+inputbar {
+    background-color: @surface-container;
+    border-radius:    10px;
+    padding:          10px 14px;
+    children:         [ prompt, entry ];
+}
+prompt { text-color: @accent; padding: 0 10px 0 0; }
+entry  { placeholder: "Filter keybinds…"; placeholder-color: @muted; }
+
+listview { lines: 16; spacing: 2px; scrollbar: true; fixed-height: false; }
+scrollbar { handle-color: @outline-variant; handle-width: 6px; }
+
+element { padding: 6px 12px; border-radius: 8px; }
+element normal.normal    { text-color: @fg; }
+element alternate.normal { text-color: @fg; background-color: @bg-alt; }
+element selected.normal  { background-color: @pill; text-color: @accent; }
+element-text { vertical-align: 0.5; text-color: inherit; }
