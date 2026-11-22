@@ -15,7 +15,7 @@ hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("GDK_BACKEND", "wayland,x11")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
-hl.env("BROWSER", "zen-browser")
+hl.env("BROWSER", "brave")
 hl.env("_JAVA_AWT_WM_NONREPARENTING", "1")   -- Burp Suite, Ghidra
 -- fcitx5 (GTK_IM_MODULE left unset on purpose: GTK uses the Wayland protocol)
 hl.env("QT_IM_MODULE", "fcitx")
