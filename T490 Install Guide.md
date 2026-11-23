@@ -307,3 +307,15 @@ fwupdmgr refresh && fwupdmgr update
 **Keys to know:** `Super+/` keybind cheatsheet · `Super+C` terminal · `Super+R` launcher · `Super+B` browser · `Super+A` Claude · `Super+E` Dolphin · `Super+W` Yazi · `Super+N` notifications · `Super+.` clipboard history · `Super+arrows` resize (hold to repeat) · `Print` screenshot · `Super+Print` region to annotate · `Super+P` lock · `Super+M` power menu.
 
 **Editing later:** files in `~/.config` are links into `~/dotfiles`, so edit either and `git commit` in the repo. Don't press Save in nwg-look or qt6ct: they replace the links with plain files. After changing a palette template, run `make-palette`.
+
+# Reused Commands
+1. Connecting to WPA2 Enterprise networks
+```bash
+nmcli connection add type wifi ifname <NetworkInterface> \
+con-name <ProfileName> ssid <SSID> wifi-sec.key-mgmt wpa-eap \
+802-1x.eap peap \
+802.1x.phase2-auth mschapv2 \
+802.1x.identity "<username>" \
+802.1x.password "<password>" \
+nmcli connection up "<ProfileName>"
+```

@@ -18,6 +18,7 @@ hl.bind(mod .. " + R", hl.dsp.exec_cmd(menu),     { description = "Application l
 hl.bind(mod .. " + B", hl.dsp.exec_cmd(browser),  { description = "Open browser" })
 hl.bind(mod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"), { description = "Notification centre" })
 hl.bind(mod .. " + A", hl.dsp.exec_cmd(claude), { description = "Open Claude"})
+hl.bind(mod .. " + equal", hl.dsp.exec_cmd([[rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | wl-copy"]]), { description = "Calculator" })
 hl.bind(mod .. " + slash", hl.dsp.exec_cmd(scripts .. "keybind-cheatsheet.sh"), { description = "Rofi Cheatsheet" })
 
 -- ===== Windows =====

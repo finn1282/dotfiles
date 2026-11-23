@@ -20,6 +20,8 @@ alias la='eza -la --icons --git --group-directories-first'
 alias tree='eza --tree --icons'
 alias cat='bat --paging=never --style=plain'
 
+setopt interactive_comments
+
 # Yazi: cd into the folder you quit in
 function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
