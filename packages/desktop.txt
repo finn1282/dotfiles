@@ -79,6 +79,8 @@ pipewire-pulse
 playerctl
 poppler
 powertop
+pyright
+python
 qt5-graphicaleffects
 qt5-quickcontrols2
 qt5-wayland
